@@ -1,4 +1,4 @@
-package br.laemcasa.model
+package br.laemcasa.model.login
 
 data class LoginRequest(
     val username: String,
