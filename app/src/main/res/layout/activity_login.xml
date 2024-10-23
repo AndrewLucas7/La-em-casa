@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btnLogin"
         app:layout_constraintHorizontal_bias="0.802"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txview"
+        app:layout_constraintTop_toBottomOf="@+id/forgetpasswordtxview"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -68,11 +68,11 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txview"
+        app:layout_constraintTop_toBottomOf="@+id/fgtpasstxview"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/txview"
+        android:id="@+id/fgtpasstxview"
         android:layout_width="147dp"
         android:layout_height="48dp"
         android:clickable="true"

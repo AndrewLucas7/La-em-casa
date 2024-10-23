@@ -1,6 +1,6 @@
 package br.laemcasa.model.login
 
 data class LoginRequest(
-    val username: String,
+    val email: String,
     val password: String
 )
