@@ -22,11 +22,11 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var usernameEditText: EditText
+    private lateinit var useremailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
-    private lateinit var forgetpassword: TextView
+    private lateinit var forgetpasswordTextview: TextView
 
     private lateinit var apiService: AuthApiService
 
@@ -36,24 +36,24 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        usernameEditText = findViewById(R.id.edtUser)
+        useremailEditText = findViewById(R.id.edtEmail)
         passwordEditText = findViewById(R.id.edtPassword)
         loginButton = findViewById(R.id.btnLogin)
         registerButton = findViewById(R.id.btnRegister)
-        forgetpassword = findViewById(R.id.fgtpasstxview)
+        forgetpasswordTextview = findViewById(R.id.fgtpasstxview)
 
         val retrofit = RetrofitClient.getInstance()
         apiService = retrofit.create(AuthApiService::class.java)
 
         loginButton.setOnClickListener {
-            val email = usernameEditText.text.toString()
+            val email = useremailEditText.text.toString()
             val password = passwordEditText.text.toString()
 
             val loginRequest = LoginRequest(email, password)
 
             loginButton.isEnabled = false
             registerButton.isEnabled = false
-            forgetpassword.isEnabled = false
+            forgetpasswordTextview.isEnabled = false
 
             apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(
@@ -63,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         loginButton.isEnabled = true
                         registerButton.isEnabled = true
-                        forgetpassword.isEnabled = true
+                        forgetpasswordTextview.isEnabled = true
                         val loginResponse = response.body()
                         val token = loginResponse?.token
 
@@ -82,8 +82,8 @@ class LoginActivity : AppCompatActivity() {
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     loginButton.isEnabled = true
                     registerButton.isEnabled = true
-                    forgetpassword.isEnabled = true
-                    Toast.makeText(applicationContext, t.message ?: "Usuario Desconhceido", Toast.LENGTH_SHORT).show()
+                    forgetpasswordTextview.isEnabled = true
+                    Toast.makeText(applicationContext, t.message ?: "Erro Desconhecido", Toast.LENGTH_SHORT).show()
                 }
 
             })
