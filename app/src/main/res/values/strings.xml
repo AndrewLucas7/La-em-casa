@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">La em Casa</string>
+    <string name="email">Email</string>
+    <string name="username">Usuario</string>
+    <string name="password">Senha</string>
+    <string name="register">Cadastre-se</string>
+    <string name="register2">Cadastrar-se</string>
 </resources>
