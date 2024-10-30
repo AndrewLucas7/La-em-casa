@@ -22,6 +22,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Response
+import android.util.Log
+import androidx.appcompat.widget.Toolbar
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -29,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var registerButton: Button
-
+    private lateinit var toolbar: Toolbar
     private lateinit var apiService: AuthApiService
     private lateinit var progressDialog: ProgressDialog
 
@@ -49,6 +51,16 @@ class RegisterActivity : AppCompatActivity() {
         usernameEditText = findViewById(R.id.edtUsernameRegister)
         passwordEditText = findViewById(R.id.edtPasswordRegister)
         registerButton = findViewById(R.id.btnRegisterRegister)
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
         val retrofit = RetrofitClient.getInstance()
         apiService = retrofit.create(AuthApiService::class.java)
@@ -72,11 +84,8 @@ class RegisterActivity : AppCompatActivity() {
                 progressDialog.dismiss()
 
                 if (response.isSuccessful) {
-                    Toast.makeText(
-                        this@RegisterActivity,
-                        "Cadastro realizado com sucesso!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this@RegisterActivity, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show()
+                    Log.i("RegisterActivity", "Usuário iniciou o cadastro")
                     val intentMain = Intent(this@RegisterActivity, MainActivity::class.java)
                     startActivity(intentMain)
                     finish()
@@ -88,6 +97,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     val errorMessage = errorResponse?.message ?: "Erro desconhecido"
                     Toast.makeText(this@RegisterActivity, "Erro: $errorMessage", Toast.LENGTH_SHORT).show()
+                    Log.e("API", "Falha na requisição de login: $errorMessage")
                 }
             }
         }

@@ -1,64 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".auth.RegisterActivity">
+    tools:context=".auth.RegisterActivity"
+    android:background="@color/white"
+    android:padding="16dp">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="414dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="20dp"
+        app:title="Voltar"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:titleTextColor="@color/black" />
 
     <EditText
         android:id="@+id/edtEmailRegister"
-        android:layout_width="243dp"
-        android:layout_height="63dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
         android:autofillHints="emailAddress"
-        android:ems="50"
+        android:background="@drawable/edittext_default_background"
+        android:drawableStart="@drawable/mail"
+        android:drawablePadding="5dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <EditText
         android:id="@+id/edtUsernameRegister"
-        android:layout_width="243dp"
-        android:layout_height="63dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:autofillHints="emailAddress"
-        android:ems="15"
+        android:autofillHints="name"
+        android:background="@drawable/edittext_default_background"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="5dp"
         android:hint="@string/username"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edtEmailRegister" />
 
     <EditText
         android:id="@+id/edtPasswordRegister"
-        android:layout_width="243dp"
-        android:layout_height="63dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:autofillHints="password"
-        android:ems="15"
+        android:background="@drawable/edittext_default_background"
+        android:drawableStart="@drawable/locker"
+        android:drawablePadding="5dp"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegisterRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edtUsernameRegister"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegisterRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="16sp"
         android:padding="16dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_background"
-        android:textColor="@color/white"
-        android:text="@string/register2" />
-
-</LinearLayout>
+        android:text="@string/register2"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
